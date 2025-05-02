@@ -92,7 +92,7 @@ resource "aws_nat_gateway" "this" {
   lifecycle {
     create_before_destroy = true
   }
-}   
+}
 ```
 {% endcode %}
 {% endhint %}
@@ -137,14 +137,16 @@ resource "aws_nat_gateway" "this" {    # Good
 ## Variables
 
 1. Don't reinvent the wheel in resource modules: use `name`, `description`, and `default` value for variables as defined in the "Argument Reference" section for the resource you are working with.
-2. Support for validation in variables is rather limited (e.g. can't access other variables or do lookups). Plan accordingly because in many cases this feature is useless.
+2. Support for validation in variables is rather limited (e.g. can't access other variables or do lookups if using a version before Terraform `1.9`). Plan accordingly because in many cases this feature is useless.
 3. Use the plural form in a variable name when type is `list(...)` or `map(...)`.
 4. Order keys in a variable block like this: `description` , `type`, `default`, `validation`.
-5. Always include `description` on all variables even if you think it is obvious (you will need it in the future).
+5. Always include `description` on all variables even if you think it is obvious (you will need it in the future). Use the same wording as the upstream documentation when applicable.
 6. Prefer using simple types (`number`, `string`, `list(...)`, `map(...)`, `any`) over specific type like `object()` unless you need to have strict constraints on each key.
 7. Use specific types like `map(map(string))` if all elements of the map have the same type (e.g. `string`) or can be converted to it (e.g. `number` type can be converted to `string`).
 8. Use type `any` to disable type validation starting from a certain depth or when multiple types should be supported.
 9. Value `{}` is sometimes a map but sometimes an object. Use `tomap(...)` to make a map because there is no way to make an object.
+10. Avoid double negatives: use positive variable names to prevent confusion. For example, use `encryption_enabled` instead of `encryption_disabled`.
+11. For variables that should never be `null`, set `nullable = false`. This ensures that passing `null` uses the default value instead of `null`.  If `null` is an acceptable value, you can omit nullable or set it to `true`.
 
 ## Outputs
 

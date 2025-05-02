@@ -9,6 +9,7 @@ description: FTP (Frequent Terraform Problems)
 * [**Terragrunt**](https://terragrunt.gruntwork.io/) - Orchestration tool
 * [**tflint**](https://github.com/terraform-linters/tflint) - Code linter
 * [**tfenv**](https://github.com/tfutils/tfenv) - Version manager
+* [**Atmos**](https://atmos.tools/) - A modern composable framework for Terraform backed by YAML
 * [**asdf-hashicorp**](https://github.com/asdf-community/asdf-hashicorp) - HashiCorp plugin for the [asdf](https://github.com/asdf-vm/asdf) version manager
 * [**Atlantis**](https://www.runatlantis.io/) - Pull Request automation
 * [**pre-commit-terraform**](https://github.com/antonbabenko/pre-commit-terraform) - Collection of git hooks for Terraform to be used with [pre-commit framework](https://pre-commit.com/)

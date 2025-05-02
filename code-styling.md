@@ -7,6 +7,26 @@
 * Use [Terraform pre-commit hooks](https://github.com/antonbabenko/pre-commit-terraform) to make sure that the code is valid, properly formatted, and automatically documented before it is pushed to git and reviewed by humans.
 {% endhint %}
 
+## Editor Configuration
+
+- **Use `.editorconfig`**: [EditorConfig](https://editorconfig.org/) helps maintain consistent coding styles for multiple developers working on the same project across various editors and IDEs. Include an `.editorconfig` file in your repositories to maintain consistent whitespace and indentation.
+
+**Example `.editorconfig`:**
+
+```editorconfig
+[*]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+
+[*.{tf,tfvars}]
+indent_style = space
+indent_size = 2
+
+[Makefile]
+indent_style = tab
+```
+
 ## Documentation
 
 ### Automatically generated documentation
@@ -20,6 +40,34 @@ Check out the [pre-commit-terraform repository](https://github.com/antonbabenko/
 ### terraform-docs
 
 [terraform-docs](https://github.com/segmentio/terraform-docs) is a tool that does the generation of documentation from Terraform modules in various output formats. You can run it manually (without pre-commit hooks), or use [pre-commit-terraform hooks](https://github.com/antonbabenko/pre-commit-terraform) to get the documentation updated automatically.
+
+
+### Comment style
+
+Use `#` for comments. Avoid `//` or block comments.
+
+**Example:**
+
+```hcl
+# This is a comment explaining the resource
+resource "aws_instance" "this" {
+# ...
+}
+```
+
+**Section Headers**: Delimit section headers in code with `# -----` or `######` for clarity.
+
+**Example:**
+
+```hcl
+# --------------------------------------------------
+# AWS EC2 Instance Configuration
+# --------------------------------------------------
+
+resource "aws_instance" "this" {
+# ...
+}
+```
 
 @todo: Document module versions, release, GH actions
 
